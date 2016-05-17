@@ -251,6 +251,13 @@ var FixedDataTable = React.createClass({
      * Whether a column is currently being resized.
      */
     isColumnResizing: PropTypes.bool,
+
+
+    /**
+     * z-index of rows.
+     */
+    zIndex: PropTypes.number,
+
   },
 
   getDefaultProps() /*object*/ {
@@ -408,7 +415,7 @@ var FixedDataTable = React.createClass({
           width={state.width}
           height={state.groupHeaderHeight}
           index={0}
-          zIndex={1}
+          zIndex={props.zIndex}
           offsetTop={0}
           scrollLeft={state.scrollX}
           fixedColumns={state.groupHeaderFixedColumns}
@@ -497,7 +504,7 @@ var FixedDataTable = React.createClass({
           width={state.width}
           height={state.footerHeight}
           index={-1}
-          zIndex={1}
+          zIndex={props.zIndex}
           offsetTop={footOffsetTop}
           fixedColumns={state.footFixedColumns}
           scrollableColumns={state.footScrollableColumns}
@@ -518,7 +525,7 @@ var FixedDataTable = React.createClass({
         width={state.width}
         height={state.headerHeight}
         index={-1}
-        zIndex={1}
+        zIndex={props.zIndex}
         offsetTop={headerOffsetTop}
         scrollLeft={state.scrollX}
         fixedColumns={state.headFixedColumns}
