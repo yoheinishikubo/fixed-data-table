@@ -84,6 +84,12 @@ var FixedDataTableRowImpl = React.createClass({
      * @param object event
      */
     onColumnResize: PropTypes.func,
+
+    /**
+     * z-index of rows.
+     */
+    zIndex: PropTypes.number,
+
   },
 
   render() /*object*/ {
@@ -108,7 +114,7 @@ var FixedDataTableRowImpl = React.createClass({
         height={this.props.height}
         left={0}
         width={fixedColumnsWidth}
-        zIndex={2}
+        zIndex={this.props.zIndex + 2}
         columns={this.props.fixedColumns}
         onColumnResize={this.props.onColumnResize}
         rowHeight={this.props.height}
@@ -123,7 +129,7 @@ var FixedDataTableRowImpl = React.createClass({
         left={this.props.scrollLeft}
         offsetLeft={fixedColumnsWidth}
         width={this.props.width - fixedColumnsWidth}
-        zIndex={0}
+        zIndex={this.props.zIndex}
         columns={this.props.scrollableColumns}
         onColumnResize={this.props.onColumnResize}
         rowHeight={this.props.height}
@@ -236,7 +242,6 @@ var FixedDataTableRow = React.createClass({
         <FixedDataTableRowImpl
           {...this.props}
           offsetTop={undefined}
-          zIndex={undefined}
         />
       </div>
     );
